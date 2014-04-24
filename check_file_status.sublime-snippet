@@ -1,0 +1,28 @@
+<snippet>
+	<content><![CDATA[
+def check_file_status(mode, file_name):
+    """ (str, file) -> file_handle
+
+    This function takes mode ("r" or "w") and file name and returns
+    file handle for file operations.
+    """
+    # Make sure files are readable or writable.
+    try:
+        file_handle = file(file_name, mode)
+    except IOError:
+        if mode == 'r':
+            sys.stderr.write("ERROR: Cannot read data file, %s.\n" % file_name)
+        elif mode == 'w':
+            sys.stderr.write("ERROR: Cannot write data file, %s.\n" % file_name)
+        sys.exit(1)
+
+    return file_handle
+    
+${1}
+${2}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>cfs</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>
